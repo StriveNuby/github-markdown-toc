@@ -1,0 +1,55 @@
+.markdown-nav-main {
+  position: fixed;
+  bottom: 30px;
+  right: 10px;
+  width: 300px;
+  font-size: 16px;
+}
+.markdown-nav-main .content {
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 10px;
+  overflow-y: auto;
+  box-shadow: 0px 0px 20px 2px #888888;
+  position: relative;
+}
+.markdown-nav-main .title {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.markdown-nav-main .toc {
+  max-height: 500px;
+}
+.markdown-nav-main .toc ol {
+  list-style-type: none;
+  padding-left: 15px;
+  margin: 0px;
+  counter-reset: toc;
+}
+.markdown-nav-main .toc li {
+  counter-increment: toc;
+  overflow: initial;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.markdown-nav-main .toc a {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+  display: inline-block;
+  color: #337ab7;
+  text-decoration: none;
+}
+.markdown-nav-main .toc a:hover {
+  text-decoration: underline;
+}
+.markdown-nav-main .toc a:before {
+  content: counters(toc, ".") ". ";
+  color: #000;
+}
+.markdown-nav-main .toc a.active {
+  background: #127eba;
+  color: #fff;
+}
