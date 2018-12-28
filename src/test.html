@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Test</title>
+    <link rel="stylesheet" href="./css/content.css" />
+  </head>
+  <body>
+    <div style="width:400px;">
+      <article>
+        <!-- h1 h2 -->
+        <h2><a href="#1">GitHub-Markdown-Toc</a></h2>
+        <h3><a href="#2">v0.0.1</a></h3>
+        <h4><a href="#2">v0.0.1</a></h4>
+        <h2><a href="#2">v0.0.1</a></h2>
+        <h2><a href="#2">v0.0.1</a></h2>
+        <h3><a href="#2">v0.0.1</a></h3>
+      </article>
+    </div>
+  </body>
+  <!-- <script src="./js/content-script.js"></script> -->
+  <script>
+    var arr = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+    function queryLevel(h) {
+      return parseInt(h.tagName.replace("H", ""), 10);
+    }
+    /**
+     * 标签分割
+     * h1 h2 h3 h3 h4 h3 h4 h5 h2 h3 h5 =>
+     * h1 h2 h3 h3 h4
+     * h3 h4 h5
+     * h2 h3 h5
+     */
+    var splitArr = [],
+      temp = [arr[0]];
+    for (var i = 1; i < arr.length; i++) {
+      var num = queryLevel(arr[i]);
+      var isDY = queryLevel(temp[temp.length - 1]) < num; // 2 3
+      if (isDY) {
+        temp.push(arr[i]);
+      } else {
+        splitArr.push(temp);
+        temp = [arr[i]];
+      }
+      if (i === arr.length - 1) splitArr.push(temp);
+    }
+    console.log(splitArr);
+  </script>
+</html>
